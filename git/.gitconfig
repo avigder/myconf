@@ -1,0 +1,71 @@
+[alias]
+	lg = log --pretty=oneline --abbrev-commit
+	br = branch -vv
+	propose = !\"/Users/avivigder/workspace/git-sling/git-propose.sh\"
+	unpropose = !/Users/avivigder/workspace/git-sling/git-delete-sling-branch.sh proposed
+	delete-rejected = !/Users/avivigder/workspace/git-sling/git-delete-sling-branch.sh rejected
+	co = checkout
+	base = pull --rebase
+	force-push = push --force --force-with-lease
+        st = status -sb
+        df = diff
+        nb = checkout -b
+        push-tags = push --tags
+        clean-fxd = clean -fxd
+        reset-head = reset --hard HEAD
+        ls = log --oneline --decorate
+        ll = log --oneline --decorate --all --graph --date=iso --pretty
+        lg = log  --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%aN%Creset' --abbrev-commit --date=relative
+        conflictstyle = diff3
+
+[core]
+        whitespace = trailing-space,space-before-tab
+	autocrlf = input
+	editor = vim
+        autocrlf = input
+        excludesfile = /Users/avivigder/.gitignore_global
+        bigfilethreshold = 200k
+
+[credential]
+	helper = cache --timeout=3600
+
+[user]
+	name = Avi Vigder
+	email = avi.vigder@elastifile.com
+
+[push]
+        default = simple
+
+[branch]
+        autosetuprebase = always
+
+[color]
+        ui = auto
+        branch = auto
+        diff = auto
+        status = auto
+
+[color "grep"]
+        external = --color=always
+
+[guitool "Rebase onto..."]
+        cmd = git rebase
+        revprompt = yes
+
+[guitool "Rebase/Continue"]
+        cmd = git rebase --continue
+[guitool "Rebase/Skip"]
+        cmd = git rebase --skip
+[guitool "Rebase/Abort"]
+        cmd = git rebase --abort
+[guitool "Pull with Rebase"]
+        cmd = git pull --rebase
+
+[log]
+        decorate = short
+
+[merge]
+        conflictstyle = diff3
+
+[credential]
+        helper = cache
