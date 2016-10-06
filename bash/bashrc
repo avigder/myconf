@@ -14,21 +14,19 @@ export PATH
 
 # export PS1='$PWD$(__git_ps1)> '
 
-alias gs='git status'
-git config --global color.ui auto
-git config --global push.default tracking
-git config --global merge.conflictstyle diff3
-git config --global alias.lg "log --pretty=oneline --abbrev-commit"
-git config --global alias.br "branch -vv"
-git config --global alias.co "checkout"
-git config --global alias.base "pull --rebase"
-git config --global alias.force-push "push --force --force-with-lease"
-git config --global core.autocrlf input
-git config --global credential.helper cache
-git config --global credential.helper 'cache --timeout=3600'
-git config --global core.editor "vim"
-git config --global user.name "Avi Vigder"
-git config --global user.email avi.vigder@elastifile.com
+# git config --global color.ui auto
+# git config --global push.default tracking
+# git config --global merge.conflictstyle diff3
+# git config --global alias.br "branch -vv"
+# git config --global alias.co "checkout"
+# git config --global alias.base "pull --rebase"
+# git config --global alias.force-push "push --force --force-with-lease"
+# git config --global core.autocrlf input
+# git config --global credential.helper cache
+# git config --global credential.helper 'cache --timeout=3600'
+# git config --global core.editor "vim"
+# git config --global user.name "Avi Vigder"
+# git config --global user.email avi.vigder@elastifile.com
 
 
 
@@ -60,7 +58,8 @@ alias find-ch='find -type f -name "*.[ch]" '
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias gs='git status'
-
+alias br='git br'
+alias gsr='git-search-replace.py'
 # Check the window size after each command and update
 shopt -s checkwinsize
 

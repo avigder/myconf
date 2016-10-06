@@ -1,0 +1,8 @@
+
+dumper.py -e /elastifile/bin/elfs --file_name /dev/shm/elfs/elfs_ecore-0 -F -c 0 -c 6 -i '$file=="bringup|pma_sunrpc"'  | less -IR
+
+dumper.py -e /elastifile/bin/elfs --raw_files /elastifile/log/dumper/elfs_ecore_0_cnc_0  -F -i '$file=="bringup"'  | less -IR
+
+GDB
+get pma_ctx
+p ((PMA_SERVER__PerECore *)((void*)req[0].data.conn->ctx->per_core[0].private_ctx - sizeof(PMA_SERVER__PerECore)))[0]
