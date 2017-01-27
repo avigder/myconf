@@ -4,7 +4,6 @@ source /usr/local/etc/profile.d/bash_completion.sh
 # Dotfiles' root-dir
 ROOT=${HOME}/
 
-# make ^-w stop at / as well as whitespace
 stty werase undef
 bind '\C-w:unix-filename-rubout'
 
@@ -64,7 +63,10 @@ alias grep='grep --color=auto'
 alias gs='git status'
 alias gf='git fetch'
 alias br='git br'
+alias gb='git br'
 alias gsr='git-search-replace.py'
+alias rtc='resolve-trivial-conflicts -dc'
+
 # Check the window size after each command and update
 shopt -s checkwinsize
 
