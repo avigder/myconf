@@ -66,6 +66,8 @@ alias br='git br'
 alias gb='git br'
 alias gsr='git-search-replace.py'
 alias rtc='resolve-trivial-conflicts -dc'
+alias remaster='gitremaster()'
+alias cluster='~/workspace/elfs-system/tools/cluster/cluster.py -s -c'
 
 # Check the window size after each command and update
 shopt -s checkwinsize
