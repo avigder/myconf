@@ -1,8 +1,58 @@
 
 dumper.py -e /elastifile/bin/elfs --file_name /dev/shm/elfs/elfs_ecore-0 -F -c 0 -c 6 -i '$file=="bringup|pma_sunrpc"'  | less -IR
 
-dumper.py -e /elastifile/bin/elfs --raw_files /elastifile/log/dumper/elfs_ecore_0_cnc_0  -F -i '$file=="bringup"'  | less -IR
+dumper.py -e /elastifile/bin/elfs --raw_files /elastifile/log/dumper/elfs_ecore_0_cnc  -F -i '$file=="bringup"'  | less -IR
+
+~/work/space/elfs-system/elfs/infra/traces/viewer/dumper.py -e ../exe/elfs --raw_files elfs_ecore-0--6_0  -F | less -IR
+dumper.py  -e ./elfs/exe/elfs --raw_files ./elfs/traces-disk/elfs_ecore_0_cnc# -i '$file=="co.c"'  -F | less -IR
+
+Get systemctl status from elfs nodes in EMRI - 
+cat vHead-esx*/elfs/logs/s* | less
+
+~/work/space/elfs-system/elfs/infra/traces/viewer/dumper.py -e vHead-esx8b.lab.il.elastifile.com/elfs/exe/elfs --raw_files vHead-esx8*/elfs/traces/elfs_ecore-0--6_0 -F -i '$file=="pma"' | less -IR
+
+./tools/cluster/cluster.py -c vc9 -s
 
 GDB
 get pma_ctx
 p ((PMA_SERVER__PerECore *)((void*)req[0].data.conn->ctx->per_core[0].private_ctx - sizeof(PMA_SERVER__PerECore)))[0]
+
+
+HA-REMOVE-FE-ADD-ECDB-NODE;HA-REMOVE-FE-BE-ADD-ECDB-NODE;HA-KILL-REMOVE-ADD-LAST-NODE;HA-PANIC-REMOVE-ADD-LAST-NODE
+meltdown:
+C25678:
+sanity:
+"SANITY-;HA-KILL-REMOVE-ADD-LAST-NODE;NFS:"
+
+
+rm -rf /var/cache/yum/*
+yum install --downloadonly --downloaddir=.  --config http://centrepo.il.elastifile.com/el-centos7.1.repo elfs-2.0.0.4-39028.b2d34e14b4d9.el7.centos
+createrepo .
+chown -R apache:apache repo
+
+
+mount issues
+mount -t nfs -o nolock 10.11.0.5:/mnt/ssd-6T/emri-reports mnt
+
+echo "n 1000 4000 const 6000000000 12 cont" > /tmp/debug-fs/vHead-h417.lab.il.elastifile.com-2/cmd/209dfeaa-f459-431d-8bf7-7d5b6ce5e275_w_inject
+
+
+vim binarry file
+:%!xxd
+
+Device failure
+I use this command to fail a PCI device:
+Find PCI slot
+root@vHead-10.11.221.3 ~# lspci |grep Non-Volatile
+81:00.0 Non-Volatile memory controller: Intel Corporation PCIe Data Center SSD (rev 01)
+82:00.0 Non-Volatile memory controller: Intel Corporation PCIe Data Center SSD (rev 01)
+lspci -s 81:00.0 -vv
+81:00.0 Non-Volatile memory controller: Intel Corporation PCIe Data Center SSD (rev 01) (prog-if 02 [NVM Express])
+    Subsystem: Intel Corporation DC P3500 SSD [2.5" SFF]
+    Physical Slot: 10
+
+Disable the slot:
+echo 0 > /sys/bus/pci/slots/10/power
+Enable the slot:
+echo 1 > /sys/bus/pci/slots/10/power
+Avi Vigder, FYI for how to shutdown a device.
